@@ -36,7 +36,7 @@
     <script>
         async function fetchResult() {
             const roll = document.getElementById('rollInput').value;
-            const response = await fetch('https://script.google.com/macros/s/AKfycbyhZOtUSC-XYftRWnlOlO-HbpWOUw4VEaCDl1ML47Hi3pkyKNd9qIrG2JXMV5KLyUFzGA/exec?roll=' + encodeURIComponent(roll));
+            const response = await fetch('https://script.google.com/macros/s/AKfycbxlYpT9MwiVWpme1jvngAf_rFTdX1c8En5KKlKi2mQ7bhyIs4hdN1sEF3ZVH4myiE65tg/exec?roll=' + encodeURIComponent(roll));
             const data = await response.json();
 
             if (data.status === 'success') {
