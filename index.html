@@ -66,9 +66,28 @@
 
     <script>
         function getStudentData() {
-            const rollNumber = document.getElementById("roll").value;
+            const rollNumber = document.getElementById("roll").value.trim();
+
+            // Clear the previous results when user clicks submit
+            document.getElementById("result").innerHTML = "";
+
+            // Check if the input field is not empty
+            if (!rollNumber) {
+                document.getElementById("result").innerHTML = `
+                    <p style="color: #FF0000;">Please enter a roll number.</p>
+                `;
+                return;  // Exit if no roll number is entered
+            }
+
+            // Construct the URL with the roll number
             const url = `https://script.google.com/macros/s/AKfycbyh-4A-wXUs2oNJqYFVAx-Oe80DVw62kJxL61tLzaer3MT2eAlGGtRhp1FEb0aXXzFiQw/exec?roll=${rollNumber}`;
-            
+
+            // Show a loading message while fetching
+            document.getElementById("result").innerHTML = `
+                <p style="color: #FFDD00;">Loading...</p>
+            `;
+
+            // Fetch the data from the Apps Script
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
